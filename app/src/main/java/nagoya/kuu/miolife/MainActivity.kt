@@ -1,7 +1,7 @@
 package nagoya.kuu.miolife
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import nagoya.kuu.miolife.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -15,5 +15,4 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
     }
-
 }
