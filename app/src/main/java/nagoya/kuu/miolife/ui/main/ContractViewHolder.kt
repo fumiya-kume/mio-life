@@ -3,6 +3,7 @@ package nagoya.kuu.miolife.ui.main
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import nagoya.kuu.miolife.databinding.ContractItemBinding
 import nagoya.kuu.miolife.ui.main.viewentity.ContractViewEntity
@@ -34,6 +35,13 @@ internal class ContractViewHolder private constructor(
         val simAdapter = SimListAdapter(context)
         simAdapter.submitList(contractViewEntity.simList)
         binding.simRecyclerView.adapter = simAdapter
+
+        binding.simRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
     }
 }

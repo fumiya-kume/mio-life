@@ -13,7 +13,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="12dp"
+        android:padding="18dp"
+        app:cardCornerRadius="18dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,6 +31,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="契約ID： hdd1728282" />
+
+            <TextView
+                android:id="@+id/plan_name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="@{viewentity.planName}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/contract_id_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/contract_id_text_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="family share" />
 
             <TextView
                 android:id="@+id/volume_text_view"
