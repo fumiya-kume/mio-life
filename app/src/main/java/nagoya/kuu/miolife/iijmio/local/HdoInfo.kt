@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
     )]
 )
 data class HdoInfo(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "hdo_service_code")
     val hdoServiceCode: String,
@@ -26,7 +26,7 @@ data class HdoInfo(
     @ColumnInfo(name = "sim_volume")
     val simVolume: Int,
     val sms: Boolean,
-    val number: Int,
+    val number: String,
     val regulation: Boolean,
     @ColumnInfo(name = "icc_id")
     val iccId: String,

@@ -34,6 +34,7 @@ class MainFragment : Fragment() {
         viewModel
             .contractList
             .observeForever {
+                binding.mainSwipeToRefresh.isRefreshing = false
                 when (it) {
                     is ContractListStatus.Success -> contractAdapter.submitList(it.contractList)
                     ContractListStatus.LoginRequired -> viewModel.login(this)
@@ -46,6 +47,10 @@ class MainFragment : Fragment() {
                     }
                 }
             }
+
+        binding.mainSwipeToRefresh.setOnRefreshListener {
+            viewModel.fetchCouponData()
+        }
 
         return binding.root
     }

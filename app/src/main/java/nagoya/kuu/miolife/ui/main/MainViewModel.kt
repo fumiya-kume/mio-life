@@ -20,7 +20,7 @@ internal class MainViewModel(
     val contractList: LiveData<ContractListStatus> = contractListLiveData
 
     fun fetchCouponData() {
-        //TODO 更新処理を追加する
+        contractListLiveData.refreshData()
     }
 
     fun login(fragment: Fragment) {

@@ -15,10 +15,10 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Coupon(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     @ColumnInfo(name = "hdd_service_code")
     val hddServiceCode: String,
-    @PrimaryKey
-    val id: Int,
     val volume: Int,
     val expire: Int?,
     val type: String

@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio
+package nagoya.kuu.miolife.iijmio.remote
 
 import android.content.Context
 import io.ktor.client.HttpClient
@@ -16,9 +16,13 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import nagoya.kuu.miolife.BuildConfig
+import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
+import nagoya.kuu.miolife.iijmio.remote.response.CouponInfoResponse
+import nagoya.kuu.miolife.iijmio.remote.response.convert
 
 class APIServiceImpl(
-    private val context: Context
+    private val context: Context,
+    private val accessTokenRepository: AccessTokenRepository
 ) : APIService {
     private val httpClient = HttpClient(Android) {
         DefaultRequest {
@@ -29,7 +33,6 @@ class APIServiceImpl(
     }
 
     override suspend fun getCouponRemainData(): CouponRemainStatus {
-        val accessTokenRepository = AccessTokenRepository(context)
 
         suspend fun <T> HttpResponse.parse(targetType: KSerializer<T>): T {
             return Json(JsonConfiguration.Stable).parse(targetType, this.readText())
@@ -45,10 +48,12 @@ class APIServiceImpl(
                     )
                     this.headers.append("X-IIJmio-Developer", BuildConfig.DEVELOPER_ID)
                 }
-            return result.parse(CouponRemainStatus.Success.serializer())
+            return CouponRemainStatus.Success(result.parse(CouponInfoResponse.serializer()).convert())
         } catch (e: ClientRequestException) {
             return when (e.response.status) {
-                HttpStatusCode(202, "") -> e.response.parse(CouponRemainStatus.Success.serializer())
+                HttpStatusCode(202, "") -> CouponRemainStatus.Success(
+                    e.response.parse(CouponInfoResponse.serializer()).convert()
+                )
                 HttpStatusCode(
                     403,
                     "error"

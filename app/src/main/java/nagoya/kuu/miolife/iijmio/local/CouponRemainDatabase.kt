@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = arrayOf(CouponRemainEntity::class, Coupon::class, HdoInfo::class),
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class CouponRemainDatabase : RoomDatabase() {

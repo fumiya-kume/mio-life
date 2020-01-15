@@ -1,7 +1,6 @@
 package nagoya.kuu.miolife.ui.main.viewentity
 
-import nagoya.kuu.miolife.iijmio.CouponRemainStatus
-import nagoya.kuu.miolife.iijmio.local.CouponAndHdo
+import nagoya.kuu.miolife.iijmio.entity.ContractListModel
 
 private fun Int.toSimVolumeString(): String {
     val remainString = if (this < 1_000) {
@@ -15,35 +14,19 @@ private fun Int.toSimVolumeString(): String {
     return "残容量: $remainString"
 }
 
-fun CouponAndHdo.convert(): ContractViewEntity {
-    val couponRemainEntity = this.couponRemainEntity
-    val volume = this.couponList.map { it.volume }.fold(0) { i, i2 -> i + i2 }
-
-    return ContractViewEntity(
-        couponRemainEntity.hddServiceCode,
-        couponRemainEntity.planName,
-        couponRemainEntity.hddServiceCode,
-        volume.toSimVolumeString(),
-        this.hdoInfoList.map { it.converter() }
-    )
-}
-
-fun List<CouponAndHdo>.convert(): List<ContractViewEntity> = this.map { it.convert() }
-
-fun CouponRemainStatus.Success.convert(): List<ContractViewEntity> {
+fun ContractListModel.convert(): List<ContractViewEntity> {
     return this
-        .couponInfoResponse
-
+        .contractList
         .map {
             val remainVolume =
-                it.couponResponseList.map { it.volume }.foldRight(0, { i, i2 -> i + i2 })
+                it.couponList.map { it.volume }.foldRight(0, { i, i2 -> i + i2 })
 
             return@map ContractViewEntity(
-                it.hddServiceCode,
+                it.hddServoceCode,
                 it.planName,
-                it.hddServiceCode,
+                it.hddServoceCode,
                 remainVolume.toSimVolumeString(),
-                it.hdoInfoResponseList.map { it.converter() }
+                it.hdoInfoList.map { it.convert() }
             )
         }
 }
