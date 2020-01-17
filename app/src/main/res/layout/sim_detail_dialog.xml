@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewentity"
+            type="nagoya.kuu.miolife.ui.main.sim.viewentity.SimDetailDialogViewEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="350dp">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:text="@{viewentity.phoneNumber}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="070-1111-1111" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/use_volume_line_chart"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
+        <ProgressBar
+            android:id="@+id/volume_line_chart_loading_progress_bar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/use_volume_line_chart"
+            app:layout_constraintEnd_toEndOf="@id/use_volume_line_chart"
+            app:layout_constraintStart_toStartOf="@id/use_volume_line_chart"
+            app:layout_constraintTop_toTopOf="@id/use_volume_line_chart" />
+
+        <Switch
+            android:id="@+id/coupon_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checked="@{viewentity.currentCouponStatus}"
+            android:padding="18dp"
+            android:text="クーポンのON・OFFを切り替える"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/use_volume_line_chart" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

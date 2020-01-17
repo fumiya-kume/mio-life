@@ -1,10 +1,10 @@
 package nagoya.kuu.miolife.iijmio.local
 
 import android.content.Context
-import nagoya.kuu.miolife.iijmio.entity.ContractListModel
-import nagoya.kuu.miolife.iijmio.entity.ContractModel
-import nagoya.kuu.miolife.iijmio.entity.CouponModel
-import nagoya.kuu.miolife.iijmio.entity.convert
+import nagoya.kuu.miolife.iijmio.model.contract.ContractListModel
+import nagoya.kuu.miolife.iijmio.model.contract.ContractModel
+import nagoya.kuu.miolife.iijmio.model.contract.CouponModel
+import nagoya.kuu.miolife.iijmio.model.contract.convert
 
 class APILocalServiceImpl(
     private val context: Context

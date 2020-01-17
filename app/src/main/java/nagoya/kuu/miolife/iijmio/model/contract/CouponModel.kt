@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.entity
+package nagoya.kuu.miolife.iijmio.model.contract
 
 data class CouponModel(
     val volume: Int = 0,

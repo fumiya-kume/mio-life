@@ -1,10 +1,9 @@
 package nagoya.kuu.miolife.iijmio.remote
 
 import kotlinx.serialization.Serializable
-import nagoya.kuu.miolife.iijmio.entity.ContractListModel
+import nagoya.kuu.miolife.iijmio.model.contract.ContractListModel
 
 sealed class CouponRemainStatus {
-
 
     data class Success(
         val contractListModel: ContractListModel
@@ -22,5 +21,4 @@ sealed class CouponRemainStatus {
 
     object ServerError : CouponRemainStatus()
     object ServerMaintenance : CouponRemainStatus()
-
 }

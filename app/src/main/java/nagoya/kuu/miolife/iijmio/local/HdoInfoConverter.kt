@@ -1,6 +1,6 @@
 package nagoya.kuu.miolife.iijmio.local
 
-import nagoya.kuu.miolife.iijmio.entity.HdoInfoModel
+import nagoya.kuu.miolife.iijmio.model.contract.HdoInfoModel
 
 fun HdoInfoModel.convert(hddServiceCode: String): HdoInfo {
     return HdoInfo(

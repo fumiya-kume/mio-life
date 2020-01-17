@@ -1,9 +1,13 @@
 package nagoya.kuu.miolife.iijmio.local
 
-import nagoya.kuu.miolife.iijmio.entity.CouponModel
+import nagoya.kuu.miolife.iijmio.model.contract.CouponModel
 
 fun Coupon.convertBack(): CouponModel {
-    return CouponModel(this.volume, this.hddServiceCode, this.type)
+    return CouponModel(
+        this.volume,
+        this.hddServiceCode,
+        this.type
+    )
 }
 
 fun CouponModel.convert(hddServiceCode: String): Coupon {

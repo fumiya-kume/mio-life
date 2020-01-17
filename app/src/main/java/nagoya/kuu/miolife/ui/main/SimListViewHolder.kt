@@ -25,7 +25,10 @@ class SimListViewHolder private constructor(
         }
     }
 
-    fun bindTo(simViewEntity: SimViewEntity) {
+    fun bindTo(simViewEntity: SimViewEntity, simOnclikedListener: SimOnclikedListener?) {
         binding.viewentity = simViewEntity
+        binding.root.setOnClickListener {
+            simOnclikedListener?.onclick(simViewEntity)
+        }
     }
 }

@@ -1,6 +1,6 @@
 package nagoya.kuu.miolife.iijmio.remote.response
 
-import nagoya.kuu.miolife.iijmio.entity.*
+import nagoya.kuu.miolife.iijmio.model.contract.*
 
 private fun CouponResponse.convert(): CouponModel {
     return CouponModel(

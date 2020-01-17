@@ -29,11 +29,15 @@ internal class ContractViewHolder private constructor(
 
     fun bindTo(
         contractViewEntity: ContractViewEntity,
+        simOnclikedListener: SimOnclikedListener?,
         context: Context
     ) {
         binding.viewentity = contractViewEntity
         val simAdapter = SimListAdapter(context)
         simAdapter.submitList(contractViewEntity.simList)
+
+        simAdapter.simOnclikedListener = simOnclikedListener
+
         binding.simRecyclerView.adapter = simAdapter
 
         binding.simRecyclerView.addItemDecoration(

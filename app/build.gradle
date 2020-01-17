@@ -91,5 +91,6 @@ dependencies {
     implementation "org.koin:koin-android-scope:2.0.1"
     implementation "org.koin:koin-android-viewmodel:2.0.1"
 
-
+    // MPAndroid
+    implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
 }

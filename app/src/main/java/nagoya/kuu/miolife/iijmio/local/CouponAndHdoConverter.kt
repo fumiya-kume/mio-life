@@ -1,7 +1,7 @@
 package nagoya.kuu.miolife.iijmio.local
 
-import nagoya.kuu.miolife.iijmio.entity.ContractModel
-import nagoya.kuu.miolife.iijmio.entity.HdoInfoModel
+import nagoya.kuu.miolife.iijmio.model.contract.ContractModel
+import nagoya.kuu.miolife.iijmio.model.contract.HdoInfoModel
 
 
 fun CouponAndHdo.convertBack(): ContractModel {

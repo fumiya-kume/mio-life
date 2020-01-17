@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import nagoya.kuu.miolife.databinding.MainFragmentBinding
+import nagoya.kuu.miolife.ui.main.sim.SimDetailDialog
+import nagoya.kuu.miolife.ui.main.viewentity.SimViewEntity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -21,6 +23,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val binding = MainFragmentBinding.inflate(
             layoutInflater,
             container,
@@ -30,6 +33,13 @@ class MainFragment : Fragment() {
         val contractAdapter = ContractAdapter(requireContext())
 
         binding.contractRecyclerView.adapter = contractAdapter
+
+        contractAdapter.simOnclikedListener = object : SimOnclikedListener {
+            override fun onclick(simViewEntity: SimViewEntity) {
+                val dialog = SimDetailDialog(simViewEntity.hdoServiceCode)
+                dialog.show(requireFragmentManager(), "")
+            }
+        }
 
         viewModel
             .contractList

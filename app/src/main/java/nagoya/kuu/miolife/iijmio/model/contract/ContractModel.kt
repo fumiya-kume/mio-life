@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.entity
+package nagoya.kuu.miolife.iijmio.model.contract
 
 data class ContractModel(
     val hddServoceCode: String,

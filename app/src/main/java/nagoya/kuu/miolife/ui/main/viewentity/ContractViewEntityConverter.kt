@@ -1,6 +1,6 @@
 package nagoya.kuu.miolife.ui.main.viewentity
 
-import nagoya.kuu.miolife.iijmio.entity.ContractListModel
+import nagoya.kuu.miolife.iijmio.model.contract.ContractListModel
 
 private fun Int.toSimVolumeString(): String {
     val remainString = if (this < 1_000) {

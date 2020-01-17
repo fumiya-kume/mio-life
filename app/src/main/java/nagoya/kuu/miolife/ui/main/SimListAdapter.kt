@@ -25,11 +25,13 @@ class SimListAdapter(
         }
     }
 
+    var simOnclikedListener: SimOnclikedListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimListViewHolder {
         return SimListViewHolder.create(context, parent)
     }
 
     override fun onBindViewHolder(holder: SimListViewHolder, position: Int) {
-        holder.bindTo(getItem(position))
+        holder.bindTo(getItem(position), simOnclikedListener)
     }
 }

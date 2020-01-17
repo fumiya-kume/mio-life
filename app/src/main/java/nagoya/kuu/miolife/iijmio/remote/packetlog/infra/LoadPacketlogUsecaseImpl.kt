@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.remote
+package nagoya.kuu.miolife.iijmio.remote.packetlog.infra
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -16,12 +16,15 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import nagoya.kuu.miolife.BuildConfig
 import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
-import nagoya.kuu.miolife.iijmio.remote.response.CouponInfoResponse
-import nagoya.kuu.miolife.iijmio.remote.response.convert
+import nagoya.kuu.miolife.iijmio.remote.packetlog.domain.LoadPacketLogUsecaseStatus
+import nagoya.kuu.miolife.iijmio.remote.packetlog.domain.LoadPacketlogUsecase
+import nagoya.kuu.miolife.iijmio.remote.packetlog.response.PacketLogRootResponse
+import nagoya.kuu.miolife.iijmio.remote.packetlog.response.convert
 
-class APIServiceImpl(
+class LoadPacketlogUsecaseImpl(
     private val accessTokenRepository: AccessTokenRepository
-) : APIService {
+) :
+    LoadPacketlogUsecase {
     private val httpClient = HttpClient(Android) {
         DefaultRequest {
         }
@@ -30,8 +33,7 @@ class APIServiceImpl(
         }
     }
 
-    override suspend fun getCouponRemainData(): CouponRemainStatus {
-
+    override suspend fun execute(): LoadPacketLogUsecaseStatus {
         suspend fun <T> HttpResponse.parse(targetType: KSerializer<T>): T {
             return Json(JsonConfiguration.Stable).parse(targetType, this.readText())
         }
@@ -39,41 +41,41 @@ class APIServiceImpl(
         try {
             val accesstoken = accessTokenRepository.loadAccessToken() ?: ""
             val result =
-                httpClient.get<HttpResponse>(Url("https://api.iijmio.jp/mobile/d/v2/coupon/")) {
+                httpClient.get<HttpResponse>(Url("https://api.iijmio.jp/mobile/d/v2/log/packet/")) {
                     this.headers.append(
                         "X-IIJmio-Authorization",
                         accesstoken
                     )
                     this.headers.append("X-IIJmio-Developer", BuildConfig.DEVELOPER_ID)
                 }
-            return CouponRemainStatus.Success(result.parse(CouponInfoResponse.serializer()).convert())
+            return LoadPacketLogUsecaseStatus.Success(result.parse(PacketLogRootResponse.serializer()).convert())
         } catch (e: ClientRequestException) {
             return when (e.response.status) {
-                HttpStatusCode(202, "") -> CouponRemainStatus.Success(
-                    e.response.parse(CouponInfoResponse.serializer()).convert()
+                HttpStatusCode(202, "") -> LoadPacketLogUsecaseStatus.Success(
+                    e.response.parse(PacketLogRootResponse.serializer()).convert()
                 )
                 HttpStatusCode(
                     403,
                     "error"
-                ) -> e.response.parse(CouponRemainStatus.Error.serializer())
+                ) -> e.response.parse(LoadPacketLogUsecaseStatus.Error.serializer())
                 HttpStatusCode(
                     405,
                     "error"
-                ) -> e.response.parse(CouponRemainStatus.Error.serializer())
+                ) -> e.response.parse(LoadPacketLogUsecaseStatus.Error.serializer())
                 HttpStatusCode(
                     412,
                     "error"
-                ) -> e.response.parse(CouponRemainStatus.Error.serializer())
+                ) -> e.response.parse(LoadPacketLogUsecaseStatus.Error.serializer())
 
                 HttpStatusCode(
                     429,
                     ""
-                ) -> e.response.parse(CouponRemainStatus.RequestLimited.serializer())
+                ) -> e.response.parse(LoadPacketLogUsecaseStatus.RequestLimited.serializer())
 
-                HttpStatusCode(500, "error") -> CouponRemainStatus.ServerError
-                HttpStatusCode(503, "error") -> CouponRemainStatus.ServerMaintenance
+                HttpStatusCode(500, "error") -> LoadPacketLogUsecaseStatus.ServerError
+                HttpStatusCode(503, "error") -> LoadPacketLogUsecaseStatus.ServerMaintenance
 
-                else -> e.response.parse(CouponRemainStatus.Error.serializer())
+                else -> e.response.parse(LoadPacketLogUsecaseStatus.Error.serializer())
             }
         }
     }

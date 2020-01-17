@@ -27,11 +27,13 @@ internal class ContractAdapter(
         }
     }
 
+    var simOnclikedListener: SimOnclikedListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContractViewHolder {
         return ContractViewHolder.create(context, parent)
     }
 
     override fun onBindViewHolder(holder: ContractViewHolder, position: Int) {
-        holder.bindTo(getItem(position), context)
+        holder.bindTo(getItem(position), simOnclikedListener, context)
     }
 }
