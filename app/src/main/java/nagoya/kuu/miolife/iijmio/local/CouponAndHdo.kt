@@ -15,6 +15,20 @@ class CouponAndHdo {
     lateinit var hdoInfoList: List<HdoInfo>
 
     @Relation(
+        entity = HduInfo::class,
+        parentColumn = "hdd_service_code",
+        entityColumn = "hdd_service_code"
+    )
+    lateinit var hduInfoList: List<HduInfo>
+
+    @Relation(
+        entity = HdxInfo::class,
+        parentColumn = "hdd_service_code",
+        entityColumn = "hdd_service_code"
+    )
+    lateinit var hdxInfoList: List<HdxInfo>
+
+    @Relation(
         entity = Coupon::class,
         parentColumn = "hdd_service_code",
         entityColumn = "hdd_service_code"

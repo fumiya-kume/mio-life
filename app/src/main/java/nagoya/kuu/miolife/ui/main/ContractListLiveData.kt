@@ -5,8 +5,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import nagoya.kuu.miolife.iijmio.local.APILocalService
-import nagoya.kuu.miolife.iijmio.remote.APIService
-import nagoya.kuu.miolife.iijmio.remote.CouponRemainStatus
+import nagoya.kuu.miolife.iijmio.remote.couponinfo.APIService
+import nagoya.kuu.miolife.iijmio.remote.couponinfo.CouponRemainStatus
 import nagoya.kuu.miolife.ui.main.viewentity.convert
 
 internal class ContractListLiveData(

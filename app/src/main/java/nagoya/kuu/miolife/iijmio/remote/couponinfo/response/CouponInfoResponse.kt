@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.remote.response
+package nagoya.kuu.miolife.iijmio.remote.couponinfo.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

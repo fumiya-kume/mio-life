@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.remote
+package nagoya.kuu.miolife.iijmio.remote.couponinfo
 
 import kotlinx.serialization.Serializable
 import nagoya.kuu.miolife.iijmio.model.contract.ContractListModel

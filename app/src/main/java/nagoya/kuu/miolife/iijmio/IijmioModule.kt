@@ -4,8 +4,10 @@ import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
 import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepositoryImpl
 import nagoya.kuu.miolife.iijmio.local.APILocalService
 import nagoya.kuu.miolife.iijmio.local.APILocalServiceImpl
-import nagoya.kuu.miolife.iijmio.remote.APIService
-import nagoya.kuu.miolife.iijmio.remote.APIServiceImpl
+import nagoya.kuu.miolife.iijmio.remote.couponinfo.APIService
+import nagoya.kuu.miolife.iijmio.remote.couponinfo.APIServiceImpl
+import nagoya.kuu.miolife.iijmio.remote.couponuse.UpdateCouponseSwitchUsecase
+import nagoya.kuu.miolife.iijmio.remote.couponuse.UpdateCouponseSwitchUsecaseImpl
 import nagoya.kuu.miolife.iijmio.remote.packetlog.domain.LoadPacketlogUsecase
 import nagoya.kuu.miolife.iijmio.remote.packetlog.infra.LoadPacketlogUsecaseImpl
 import org.koin.android.ext.koin.androidContext
@@ -17,4 +19,5 @@ val iijmioModule = module {
     factory { LoginServiceImpl() as LoginService }
     factory { AccessTokenRepositoryImpl(androidContext()) as AccessTokenRepository }
     factory { LoadPacketlogUsecaseImpl(get()) as LoadPacketlogUsecase }
+    factory { UpdateCouponseSwitchUsecaseImpl(get()) as UpdateCouponseSwitchUsecase }
 }

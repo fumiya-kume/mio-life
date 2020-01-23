@@ -19,12 +19,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 internal class SimDetailDialog(
-    private val hdoServiceCode: String
+    private val serviceCode: String
 ) : BottomSheetDialogFragment() {
 
     private val viewModel: SimDetailDialogViewModel by viewModel(parameters = {
         parametersOf(
-            hdoServiceCode
+            serviceCode
         )
     })
 
@@ -57,6 +57,36 @@ internal class SimDetailDialog(
                     }
                 }
             }
+
+        viewModel
+            .couponSwitch
+            .observeForever {
+                when (it) {
+                    CouponSwitchStatus.Loading -> {
+                        binding.couponSwitchLoadingProgressBar.visibility = View.VISIBLE
+                        binding.couponSwitch.isEnabled = false
+                    }
+                    is CouponSwitchStatus.Success -> {
+                        binding.couponSwitchLoadingProgressBar.visibility = View.GONE
+                        binding.couponSwitch.isEnabled = true
+
+                        binding.couponSwitch.isChecked = it.checked
+                    }
+                    is CouponSwitchStatus.Failed -> {
+                        binding.couponSwitchLoadingProgressBar.visibility = View.VISIBLE
+                        binding.couponSwitch.isEnabled = false
+
+                        Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+        binding.couponSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            viewModel.updateCouponSwitch(isChecked, serviceCode)
+        }
+
+        viewModel.refreshSwitchData()
+
         return binding.root
     }
 
@@ -77,7 +107,7 @@ internal class SimDetailDialog(
 
         this.setDrawBorders(false)
         this.setDrawGridBackground(false)
-        this.description = Description().apply { text = "" }
+        this.description = Description().apply { text = "MB" }
         this.setBorderWidth(0F)
         this.xAxis.isEnabled = false
 

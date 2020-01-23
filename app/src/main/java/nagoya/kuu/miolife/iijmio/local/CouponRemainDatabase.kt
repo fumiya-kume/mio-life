@@ -6,7 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = arrayOf(CouponRemainEntity::class, Coupon::class, HdoInfo::class),
+    entities = arrayOf(
+        CouponRemainEntity::class,
+        Coupon::class,
+        HdoInfo::class,
+        HduInfo::class,
+        HdxInfo::class
+    ),
     version = 2,
     exportSchema = false
 )
@@ -14,6 +20,8 @@ abstract class CouponRemainDatabase : RoomDatabase() {
     abstract fun couponRemainDao(): CouponRemainDao
     abstract fun CouponDao(): CouponDao
     abstract fun HdoInfoDao(): HdoInfoDao
+    abstract fun HduInfoDao(): HduInfoDao
+    abstract fun HdxInfoDao(): HdxInfoDao
 
     companion object {
         @Volatile

@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:text="@{viewentity.hddServiceId}"
+                android:textColor="@color/primaryTextColor"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
