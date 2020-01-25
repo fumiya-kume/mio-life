@@ -19,6 +19,16 @@
             android:layout_height="match_parent"
             tools:context=".ui.main.MainFragment">
 
+            <ImageView
+                android:id="@+id/setting_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_margin="18dp"
+                android:src="@drawable/ic_settings_applications_24px"
+                android:tint="@color/secondaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"

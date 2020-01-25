@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="nagoya.kuu.miolife.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingRootFragment"
+            app:destination="@id/settingRootFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingRootFragment"
+        android:name="nagoya.kuu.miolife.ui.main.setting.SettingRootFragment"
+        android:label="SettingRootFragment" />
+</navigation>

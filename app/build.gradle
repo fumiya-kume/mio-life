@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'com.google.gms.oss.licenses.plugin'
 
 android {
     compileSdkVersion 29
@@ -93,4 +94,12 @@ dependencies {
 
     // MPAndroid
     implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+
+    // Setting
+    implementation "androidx.preference:preference-ktx:1.1.0"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+
+    // license tool
+    implementation "com.google.android.gms:play-services-oss-licenses:17.0.0"
 }

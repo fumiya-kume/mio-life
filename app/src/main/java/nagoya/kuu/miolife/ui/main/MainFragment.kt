@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import nagoya.kuu.miolife.R
 import nagoya.kuu.miolife.databinding.MainFragmentBinding
 import nagoya.kuu.miolife.ui.main.sim.SimDetailDialog
 import nagoya.kuu.miolife.ui.main.viewentity.SimViewEntity
@@ -61,6 +63,12 @@ class MainFragment : Fragment() {
         binding.mainSwipeToRefresh.setOnRefreshListener {
             viewModel.fetchCouponData()
         }
+
+        binding
+            .settingButton
+            .setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_settingRootFragment)
+            }
 
         return binding.root
     }
