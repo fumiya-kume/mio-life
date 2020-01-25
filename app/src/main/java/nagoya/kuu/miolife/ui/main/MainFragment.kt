@@ -38,7 +38,8 @@ class MainFragment : Fragment() {
 
         contractAdapter.simOnclikedListener = object : SimOnclikedListener {
             override fun onclick(simViewEntity: SimViewEntity) {
-                val dialog = SimDetailDialog(simViewEntity.hdoServiceCode)
+                val dialog =
+                    SimDetailDialog(simViewEntity.hdoServiceCode, simViewEntity.phoneNumber)
                 dialog.show(requireFragmentManager(), "")
             }
         }

@@ -18,36 +18,42 @@ internal class UseVolumeLogListLiveData(
             UseVolumeLogStatus.Loading
         )
 
-        coroutineScope.launch(Dispatchers.IO) {
-            when (val response = loadPacketlogUsecase.execute()) {
-                is LoadPacketLogUsecaseStatus.Success -> {
-                    postValue(
-                        UseVolumeLogStatus.Success(
-                            response.packetLogRootModel.convert(hdoServiceCode)
+        kotlin.runCatching {
+            coroutineScope.launch(Dispatchers.IO) {
+                when (val response = loadPacketlogUsecase.execute()) {
+                    is LoadPacketLogUsecaseStatus.Success -> {
+                        postValue(
+                            UseVolumeLogStatus.Success(
+                                response.packetLogRootModel.convert(hdoServiceCode)
+                            )
                         )
-                    )
-                }
-                is LoadPacketLogUsecaseStatus.Error -> {
-                    postValue(
-                        UseVolumeLogStatus.Failed(response.returnCode)
-                    )
-                }
-                is LoadPacketLogUsecaseStatus.RequestLimited -> {
-                    postValue(
-                        UseVolumeLogStatus.Failed("リクエストが多すぎます")
-                    )
-                }
-                LoadPacketLogUsecaseStatus.ServerError -> {
-                    postValue(
-                        UseVolumeLogStatus.Failed("サーバーエラー")
-                    )
-                }
-                LoadPacketLogUsecaseStatus.ServerMaintenance -> {
-                    postValue(
-                        UseVolumeLogStatus.Failed("サーバーメンテナンス中")
-                    )
+                    }
+                    is LoadPacketLogUsecaseStatus.Error -> {
+                        postValue(
+                            UseVolumeLogStatus.Failed(response.returnCode)
+                        )
+                    }
+                    is LoadPacketLogUsecaseStatus.RequestLimited -> {
+                        postValue(
+                            UseVolumeLogStatus.Failed("リクエストが多すぎます")
+                        )
+                    }
+                    LoadPacketLogUsecaseStatus.ServerError -> {
+                        postValue(
+                            UseVolumeLogStatus.Failed("サーバーエラー")
+                        )
+                    }
+                    LoadPacketLogUsecaseStatus.ServerMaintenance -> {
+                        postValue(
+                            UseVolumeLogStatus.Failed("サーバーメンテナンス中")
+                        )
+                    }
                 }
             }
+        }.onFailure {
+            postValue(
+                UseVolumeLogStatus.Failed("${it.localizedMessage}")
+            )
         }
     }
 }

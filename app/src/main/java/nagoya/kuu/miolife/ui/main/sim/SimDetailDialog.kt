@@ -15,12 +15,14 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import nagoya.kuu.miolife.databinding.SimDetailDialogBinding
+import nagoya.kuu.miolife.ui.main.sim.viewentity.SimDetailDialogViewEntity
 import nagoya.kuu.miolife.ui.main.sim.viewentity.UseVolumeLogViewEntity
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 internal class SimDetailDialog(
-    private val serviceCode: String
+    private val serviceCode: String,
+    private val phoneNumber: String
 ) : BottomSheetDialogFragment() {
 
     private val viewModel: SimDetailDialogViewModel by viewModel(parameters = {
@@ -40,6 +42,13 @@ internal class SimDetailDialog(
                 container,
                 false
             )
+
+
+        binding.viewentity = SimDetailDialogViewEntity(
+            id = 0,
+            phoneNumber = phoneNumber,
+            currentCouponStatus = false
+        )
 
         viewModel
             .useVolumeLogList
@@ -71,7 +80,8 @@ internal class SimDetailDialog(
                         binding.couponSwitchLoadingProgressBar.visibility = View.GONE
                         binding.couponSwitch.isEnabled = true
 
-                        binding.couponSwitch.isChecked = it.checked
+                        binding.viewentity =
+                            binding.viewentity?.copy(currentCouponStatus = it.checked)
                     }
                     is CouponSwitchStatus.Failed -> {
                         binding.couponSwitchLoadingProgressBar.visibility = View.VISIBLE
