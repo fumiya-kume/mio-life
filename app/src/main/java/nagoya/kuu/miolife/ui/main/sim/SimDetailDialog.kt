@@ -1,5 +1,6 @@
 package nagoya.kuu.miolife.ui.main.sim
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -91,25 +92,48 @@ internal class SimDetailDialog(
     }
 
     private fun LineChart.setupLineChart(useVolumeLogViewEntityList: List<UseVolumeLogViewEntity>) {
-        val lineDataSet =
-            LineDataSet(
-                useVolumeLogViewEntityList.mapIndexed { index, useVolumeLogViewEntity ->
+
+
+        fun setUpLineDataSet(data: List<Float>, label: String, color: Int): LineDataSet {
+            return LineDataSet(
+                data.mapIndexed { index, item ->
                     Entry(
                         index.toFloat(),
-                        useVolumeLogViewEntity.withCouponVolume.toFloat()
+                        item
                     )
                 },
-                "使用量グラフ"
+                label
             ).apply {
                 this.valueTextSize = 12F
+                setDrawHorizontalHighlightIndicator(false)
+                setDrawVerticalHighlightIndicator(false)
+                mode = LineDataSet.Mode.CUBIC_BEZIER
+                setDrawFilled(true)
+                fillColor = color
             }
-        this.data = LineData(lineDataSet)
+        }
+
+        this.data =
+            LineData(
+                setUpLineDataSet(
+                    useVolumeLogViewEntityList.map { it.withCouponVolume.toFloat() },
+                    "クーポン使用量",
+                    Color.rgb(140, 234, 255)
+                ),
+                setUpLineDataSet(
+                    useVolumeLogViewEntityList.map { it.withoutCouponVolume.toFloat() },
+                    "クーポン外使用量",
+                    Color.rgb(140, 234, 140)
+                )
+            )
 
         this.setDrawBorders(false)
         this.setDrawGridBackground(false)
         this.description = Description().apply { text = "MB" }
         this.setBorderWidth(0F)
         this.xAxis.isEnabled = false
+
+        this.setVisibleXRange(0F, 10F)
 
         this.getXAxis().valueFormatter =
             IndexAxisValueFormatter(useVolumeLogViewEntityList.map { it.date })
