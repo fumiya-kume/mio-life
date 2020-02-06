@@ -32,10 +32,31 @@
             android:padding="18dp"
             android:text="@{viewentity.simType}"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/coupon_use_checkbox"
             app:layout_constraintStart_toEndOf="@id/phone_number_text_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="音声" />
+
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/coupon_use_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:checked="@{viewentity.couponUse}"
+            android:text="クーポン"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/coupon_use_checkbox_progress_bar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/coupon_use_checkbox"
+            app:layout_constraintEnd_toEndOf="@id/coupon_use_checkbox"
+            app:layout_constraintStart_toStartOf="@id/coupon_use_checkbox"
+            app:layout_constraintTop_toTopOf="@id/coupon_use_checkbox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
