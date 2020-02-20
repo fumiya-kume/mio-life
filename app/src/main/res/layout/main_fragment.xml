@@ -19,13 +19,13 @@
             android:layout_height="match_parent"
             tools:context=".ui.main.MainFragment">
 
-            <ImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/setting_button"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_margin="18dp"
-                android:src="@drawable/ic_settings_applications_24px"
-                android:tint="@color/secondaryColor"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="設定"
+                android:textColor="@color/primaryColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

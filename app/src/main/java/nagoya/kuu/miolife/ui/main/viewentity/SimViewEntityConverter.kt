@@ -23,6 +23,7 @@ fun HdoInfoModel.convert(): SimViewEntity {
             voice = this.voice,
             sms = this.sms
         ),
-        hdoServiceCode = this.hdoServiceCode
+        hdoServiceCode = this.hdoServiceCode,
+        couponUse = this.couponUse
     )
 }
