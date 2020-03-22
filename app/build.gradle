@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'com.google.gms.oss.licenses.plugin'
+apply plugin: "de.mannodermaus.android-junit5"
 
 android {
     compileSdkVersion 29
@@ -59,91 +60,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    dependencies {
-        implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-        implementation 'androidx.appcompat:appcompat:1.1.0'
-        implementation 'androidx.core:core-ktx:1.2.0'
-        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-        implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-        //noinspection LifecycleAnnotationProcessorWithJava8
-        kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
-        androidTestImplementation 'androidx.test:core:1.2.0'
-        androidTestImplementation 'androidx.test:runner:1.2.0'
-        androidTestImplementation "de.mannodermaus.junit5:android-test-core:1.0.0"
-        androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
 
-        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-        androidTestImplementation 'androidx.test:runner:1.2.0'
-        androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
-        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-        implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-        // Robolectric
-        androidTestImplementation "org.robolectric:robolectric:4.0"
-
-        // Chrome Custom tabs
-        implementation "androidx.browser:browser:1.2.0"
-
-        // Ktor
-        implementation "io.ktor:ktor-client:1.2.6"
-        implementation "io.ktor:ktor-client-core:1.2.6"
-        implementation "io.ktor:ktor-client-serialization-jvm:1.2.6"
-        implementation "io.ktor:ktor-client-json:1.2.6"
-        implementation "io.ktor:ktor-client-json-jvm:1.2.6"
-        implementation "io.ktor:ktor-client-android:1.2.6"
-
-        // kotlin serialization
-        implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
-
-        // Material UI
-        implementation "com.google.android.material:material:1.1.0"
-
-        // Swipe to refresh
-        implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
-        // Room
-        implementation "androidx.room:room-runtime:2.2.5"
-        kapt "androidx.room:room-compiler:2.2.5"
-        androidTestImplementation "androidx.room:room-testing:2.2.5"
-
-        // Koin
-        implementation "org.koin:koin-android:2.0.1"
-        implementation "org.koin:koin-android-scope:2.0.1"
-        implementation "org.koin:koin-android-viewmodel:2.0.1"
-
-        // MPAndroid
-        implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
-
-        // Setting
-        implementation "androidx.preference:preference-ktx:1.1.0"
-        implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-        implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
-
-        // license tool
-        implementation "com.google.android.gms:play-services-oss-licenses:17.0.0"
-
-        // Junit5
-        testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.0"
-        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.0"
-        testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.0"
-
-        //Mockito
-        testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
-
-        // threetenabp
-        implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
-        testImplementation 'org.threeten:threetenbp:1.4.1'
-
-        //Spek
-        testImplementation "org.spekframework.spek2:spek-dsl-jvm:2.0.10"
-        testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:2.0.10"
-        testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:1.3.70"
-
-        // Junit Platform Runner
-        testImplementation 'org.junit.platform:junit-platform-runner:1.6.0'
-        androidTestImplementation "androidx.test:runner:1.2.0"
-        androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
 
@@ -186,5 +103,91 @@ android {
             exclude 'org/apache/maven/project/pom-4.0.0.xml'
         }
 
+        dependencies {
+            implementation fileTree(dir: 'libs', include: ['*.jar'])
+            implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+            implementation 'androidx.appcompat:appcompat:1.1.0'
+            implementation 'androidx.core:core-ktx:1.2.0'
+            implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+            implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+            implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+            //noinspection LifecycleAnnotationProcessorWithJava8
+            kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+            androidTestImplementation 'androidx.test:core:1.2.0'
+            androidTestImplementation 'androidx.test:runner:1.2.0'
+            androidTestImplementation "de.mannodermaus.junit5:android-test-core:1.0.0"
+            androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
+
+            androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+            androidTestImplementation 'androidx.test:runner:1.2.0'
+            androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
+            androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+            implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+            // Robolectric
+            androidTestImplementation "org.robolectric:robolectric:4.0"
+
+            // Chrome Custom tabs
+            implementation "androidx.browser:browser:1.2.0"
+
+            // Ktor
+            implementation "io.ktor:ktor-client:1.2.6"
+            implementation "io.ktor:ktor-client-core:1.2.6"
+            implementation "io.ktor:ktor-client-serialization-jvm:1.2.6"
+            implementation "io.ktor:ktor-client-json:1.2.6"
+            implementation "io.ktor:ktor-client-json-jvm:1.2.6"
+            implementation "io.ktor:ktor-client-android:1.2.6"
+
+            // kotlin serialization
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
+
+            // Material UI
+            implementation "com.google.android.material:material:1.1.0"
+
+            // Swipe to refresh
+            implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+            // Room
+            implementation "androidx.room:room-runtime:2.2.5"
+            kapt "androidx.room:room-compiler:2.2.5"
+            androidTestImplementation "androidx.room:room-testing:2.2.5"
+
+            // Koin
+            implementation "org.koin:koin-android:2.0.1"
+            implementation "org.koin:koin-android-scope:2.0.1"
+            implementation "org.koin:koin-android-viewmodel:2.0.1"
+
+            // MPAndroid
+            implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+
+            // Setting
+            implementation "androidx.preference:preference-ktx:1.1.0"
+            implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
+            implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+
+            // license tool
+            implementation "com.google.android.gms:play-services-oss-licenses:17.0.0"
+
+            // Junit5
+            testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.0"
+            testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.0"
+            testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.0"
+
+            //Mockito
+            testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
+            // threetenabp
+            implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
+            testImplementation 'org.threeten:threetenbp:1.4.1'
+
+            //Spek
+            testImplementation "org.spekframework.spek2:spek-dsl-jvm:2.0.10"
+            testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:2.0.10"
+            testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:1.3.70"
+
+            // Junit Platform Runner
+            testImplementation 'org.junit.platform:junit-platform-runner:1.6.0'
+            androidTestImplementation "androidx.test:runner:1.2.0"
+            androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
+        }
     }
 }
