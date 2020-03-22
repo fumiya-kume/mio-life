@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 internal class AccessTokenRepositoryImpl(
-    private val context: Context
+    context: Context
 ) : AccessTokenRepository {
     private val preference: SharedPreferences =
         context.getSharedPreferences("access_Token", Context.MODE_PRIVATE)
