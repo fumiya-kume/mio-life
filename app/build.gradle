@@ -19,13 +19,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        sourceSets.each {
-            it.java.srcDirs += "src/$it.name/kotlin"
-        }
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
     }
-    dataBinding {
-        enabled = true
+
+    sourceSets.each {
+        it.java.srcDirs += "src/$it.name/kotlin"
     }
 
 
@@ -33,15 +31,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            compileOptions {
-                sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
-            }
-            kotlinOptions {
-                jvmTarget = '1.8'
-            }
         }
     }
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     packagingOptions {
         exclude 'META-INF/ktor-http.kotlin_module'
         exclude 'META-INF/kotlinx-io.kotlin_module'
@@ -53,8 +53,11 @@ android {
         exclude 'META-INF/kotlinx-serialization-runtime.kotlin_module'
         exclude 'META-INF/ktor-client-json.kotlin_module'
         exclude 'META-INF/ktor-client-core.kotlin_module'
-        dataBinding {
-            enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
         }
     }
 }
