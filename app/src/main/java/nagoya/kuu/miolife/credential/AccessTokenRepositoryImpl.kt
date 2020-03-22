@@ -3,7 +3,7 @@ package nagoya.kuu.miolife.credential
 import android.content.Context
 import android.content.SharedPreferences
 
-class AccessTokenRepositoryImpl(
+internal class AccessTokenRepositoryImpl(
     private val context: Context
 ) : AccessTokenRepository {
     private val preference: SharedPreferences =
