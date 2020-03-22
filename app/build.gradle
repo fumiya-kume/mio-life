@@ -144,5 +144,47 @@ android {
         testImplementation 'org.junit.platform:junit-platform-runner:1.6.0'
         androidTestImplementation "androidx.test:runner:1.2.0"
         androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                    exclude 'JUnit Vintage'
+                }
+            }
+            kotlinOptions {
+                jvmTarget = '1.8'
+                jacocoOptions {
+                    // here goes all jacoco config, for example
+                    html.enabled = true
+                    xml.enabled = false
+                    csv.enabled = false
+                }
+            }
+            unitTests.all {
+                testLogging.events = ["passed", "skipped", "failed"]
+            }
+
+            unitTests.returnDefaultValues = true
+            unitTests.includeAndroidResources = true
+        }
+
+        packagingOptions {
+            exclude 'META-INF/ktor-http.kotlin_module'
+            exclude 'META-INF/kotlinx-io.kotlin_module'
+            exclude 'META-INF/atomicfu.kotlin_module'
+            exclude 'META-INF/ktor-utils.kotlin_module'
+            exclude 'META-INF/kotlinx-coroutines-io.kotlin_module'
+            exclude 'META-INF/kotlinx-coroutines-core.kotlin_module'
+            exclude 'META-INF/ktor-http-cio.kotlin_module'
+            exclude 'META-INF/kotlinx-serialization-runtime.kotlin_module'
+            exclude 'META-INF/ktor-client-json.kotlin_module'
+            exclude 'META-INF/ktor-client-core.kotlin_module'
+            exclude 'licenses/javolution.license.TXT'
+            exclude 'org/apache/maven/project/pom-4.0.0.xml'
+        }
+
     }
 }
