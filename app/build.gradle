@@ -59,6 +59,8 @@ android {
         exclude 'META-INF/ktor-client-json.kotlin_module'
         exclude 'META-INF/ktor-client-core.kotlin_module'
     }
+        // Swipe to refresh
+        implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 }
 
 dependencies {
