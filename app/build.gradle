@@ -20,86 +20,89 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-    }
+        sourceSets.each {
+            it.java.srcDirs += "src/$it.name/kotlin"
+        }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+
+        dataBinding {
+            enabled = true
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        packagingOptions {
+            exclude 'META-INF/ktor-http.kotlin_module'
+            exclude 'META-INF/kotlinx-io.kotlin_module'
+            exclude 'META-INF/atomicfu.kotlin_module'
+            exclude 'META-INF/ktor-utils.kotlin_module'
+            exclude 'META-INF/kotlinx-coroutines-io.kotlin_module'
+            exclude 'META-INF/kotlinx-coroutines-core.kotlin_module'
+            exclude 'META-INF/ktor-http-cio.kotlin_module'
+            exclude 'META-INF/kotlinx-serialization-runtime.kotlin_module'
+            exclude 'META-INF/ktor-client-json.kotlin_module'
+            exclude 'META-INF/ktor-client-core.kotlin_module'
         }
     }
 
-    dataBinding {
-        enabled = true
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.core:core-ktx:1.1.0'
+        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+        implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+        kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+        // Chrome Custom tabs
+        implementation "androidx.browser:browser:1.2.0"
+
+        // Ktor
+        implementation "io.ktor:ktor-client:1.2.6"
+        implementation "io.ktor:ktor-client-core:1.2.6"
+        implementation "io.ktor:ktor-client-serialization-jvm:1.2.6"
+        implementation "io.ktor:ktor-client-json:1.2.6"
+        implementation "io.ktor:ktor-client-json-jvm:1.2.6"
+        implementation "io.ktor:ktor-client-android:1.2.6"
+
+        // kotlin serialization
+        implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
+
+        // Material UI
+        implementation "com.google.android.material:material:1.0.0"
+
+        // Room
+        implementation "androidx.room:room-runtime:2.2.3"
+        kapt "androidx.room:room-compiler:2.2.3"
+        androidTestImplementation "androidx.room:room-testing:2.2.3"
+
+        // Koin
+        implementation "org.koin:koin-android:2.0.1"
+        implementation "org.koin:koin-android-scope:2.0.1"
+        implementation "org.koin:koin-android-viewmodel:2.0.1"
+
+        // MPAndroid
+        implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+
+        // Setting
+        implementation "androidx.preference:preference-ktx:1.1.0"
+        implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
+        implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+
+        // license tool
+        implementation "com.google.android.gms:play-services-oss-licenses:17.0.0"
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    packagingOptions {
-        exclude 'META-INF/ktor-http.kotlin_module'
-        exclude 'META-INF/kotlinx-io.kotlin_module'
-        exclude 'META-INF/atomicfu.kotlin_module'
-        exclude 'META-INF/ktor-utils.kotlin_module'
-        exclude 'META-INF/kotlinx-coroutines-io.kotlin_module'
-        exclude 'META-INF/kotlinx-coroutines-core.kotlin_module'
-        exclude 'META-INF/ktor-http-cio.kotlin_module'
-        exclude 'META-INF/kotlinx-serialization-runtime.kotlin_module'
-        exclude 'META-INF/ktor-client-json.kotlin_module'
-        exclude 'META-INF/ktor-client-core.kotlin_module'
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    // Chrome Custom tabs
-    implementation "androidx.browser:browser:1.2.0"
-
-    // Ktor
-    implementation "io.ktor:ktor-client:1.2.6"
-    implementation "io.ktor:ktor-client-core:1.2.6"
-    implementation "io.ktor:ktor-client-serialization-jvm:1.2.6"
-    implementation "io.ktor:ktor-client-json:1.2.6"
-    implementation "io.ktor:ktor-client-json-jvm:1.2.6"
-    implementation "io.ktor:ktor-client-android:1.2.6"
-
-    // kotlin serialization
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
-
-    // Material UI
-    implementation "com.google.android.material:material:1.0.0"
-
-    // Room
-    implementation "androidx.room:room-runtime:2.2.3"
-    kapt "androidx.room:room-compiler:2.2.3"
-    androidTestImplementation "androidx.room:room-testing:2.2.3"
-
-    // Koin
-    implementation "org.koin:koin-android:2.0.1"
-    implementation "org.koin:koin-android-scope:2.0.1"
-    implementation "org.koin:koin-android-viewmodel:2.0.1"
-
-    // MPAndroid
-    implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
-
-    // Setting
-    implementation "androidx.preference:preference-ktx:1.1.0"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
-
-    // license tool
-    implementation "com.google.android.gms:play-services-oss-licenses:17.0.0"
 }
