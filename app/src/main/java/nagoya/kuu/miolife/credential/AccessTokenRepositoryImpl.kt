@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.accesstoken
+package nagoya.kuu.miolife.credential
 
 import android.content.Context
 import android.content.SharedPreferences

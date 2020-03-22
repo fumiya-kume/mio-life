@@ -1,4 +1,4 @@
-package nagoya.kuu.miolife.iijmio.accesstoken
+package nagoya.kuu.miolife.credential
 
 interface AccessTokenRepository {
     fun loadAccessToken(): String?
