@@ -13,7 +13,7 @@ import androidx.room.RoomDatabase
         HduInfo::class,
         HdxInfo::class
     ),
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class CouponRemainDatabase : RoomDatabase() {
@@ -37,7 +37,9 @@ abstract class CouponRemainDatabase : RoomDatabase() {
                     context.applicationContext,
                     CouponRemainDatabase::class.java,
                     "word_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 return instance
             }
