@@ -1,6 +1,7 @@
 package nagoya.kuu.miolife
 
 import android.app.Application
+import nagoya.kuu.miolife.credential.credentialModule
 import nagoya.kuu.miolife.iijmio.iijmioModule
 import nagoya.kuu.miolife.ui.main.mainModule
 import nagoya.kuu.miolife.ui.main.setting.settingModule
@@ -13,7 +14,8 @@ class MyApplication : Application() {
         mainModule,
         iijmioModule,
         simModule,
-        settingModule
+        settingModule,
+        credentialModule
     )
 
     override fun onCreate() {
