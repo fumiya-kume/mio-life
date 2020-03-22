@@ -1,6 +1,6 @@
 package nagoya.kuu.miolife.ui.main.setting
 
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
+import nagoya.kuu.miolife.credential.AccessTokenRepository
 
 internal class AccessTokenLiveDataFactory(
     private val accessTokenRepository: AccessTokenRepository
