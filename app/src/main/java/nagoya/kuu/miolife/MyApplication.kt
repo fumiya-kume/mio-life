@@ -1,6 +1,7 @@
 package nagoya.kuu.miolife
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import nagoya.kuu.miolife.credential.credentialModule
 import nagoya.kuu.miolife.iijmio.iijmioModule
 import nagoya.kuu.miolife.ui.main.mainModule
@@ -21,6 +22,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        AndroidThreeTen.init(applicationContext)
 
         startKoin {
             androidContext(this@MyApplication)
