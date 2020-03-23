@@ -92,7 +92,7 @@ internal class SimDetailDialog(
                 }
             }
 
-        binding.couponSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.couponSwitch.setOnCheckedChangeListener { _, isChecked ->
             viewModel.updateCouponSwitch(isChecked, serviceCode)
         }
 

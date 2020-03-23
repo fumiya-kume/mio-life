@@ -8,6 +8,7 @@ import nagoya.kuu.miolife.ui.main.setting.settingModule
 import nagoya.kuu.miolife.ui.main.sim.simModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 
 class MyApplication : Application() {
     val modules = listOf(
@@ -25,5 +26,11 @@ class MyApplication : Application() {
             androidContext(this@MyApplication)
             modules(modules)
         }
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+
+        stopKoin()
     }
 }
