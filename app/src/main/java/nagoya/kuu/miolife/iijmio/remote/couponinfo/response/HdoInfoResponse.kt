@@ -5,13 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class HdoInfoResponse(
-    val couponUse: Boolean,
+    val couponUse: Boolean = false,
     @SerialName("coupon")
-    val couponResponseList: List<CouponResponse>,
-    val hdoServiceCode: String,
-    val sms: Boolean,
-    val number: String,
-    val regulation: Boolean,
-    val iccid: String,
-    val voice: Boolean
+    val couponResponseList: List<CouponResponse> = emptyList(),
+    val hdoServiceCode: String = "",
+    val sms: Boolean = false,
+    val number: String = "",
+    val regulation: Boolean = false,
+    val iccid: String = "",
+    val voice: Boolean = false
 )

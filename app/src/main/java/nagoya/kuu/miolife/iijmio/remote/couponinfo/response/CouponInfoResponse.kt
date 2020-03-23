@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CouponInfoResponse(
     @SerialName("couponInfo")
-    val contractListResponse: List<ContractResponse>,
-    val returnCode: String
+    val contractListResponse: List<ContractResponse> = emptyList(),
+    val returnCode: String = ""
 )
