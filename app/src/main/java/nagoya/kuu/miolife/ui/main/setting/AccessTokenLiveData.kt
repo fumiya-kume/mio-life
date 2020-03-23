@@ -1,7 +1,7 @@
 package nagoya.kuu.miolife.ui.main.setting
 
 import androidx.lifecycle.LiveData
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
+import nagoya.kuu.miolife.credential.AccessTokenRepository
 
 internal class AccessTokenLiveData(
     private val accessTokenRepository: AccessTokenRepository

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
+import nagoya.kuu.miolife.credential.AccessTokenRepository
 import org.koin.android.ext.android.inject
 
 internal class LoginActivity : FragmentActivity(R.layout.login_activity) {

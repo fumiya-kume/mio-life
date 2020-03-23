@@ -43,7 +43,6 @@ internal class ContractListLiveData(
                             CouponRemainStatus.ServerMaintenance -> ContractListStatus.ErrorHappened(
                                 "サーバーメンテナンス中です"
                             )
-                            else -> ContractListStatus.LoginRequired
                         }
                     )
                 }.onFailure {

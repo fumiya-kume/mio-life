@@ -1,7 +1,5 @@
 package nagoya.kuu.miolife.iijmio
 
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepositoryImpl
 import nagoya.kuu.miolife.iijmio.local.APILocalService
 import nagoya.kuu.miolife.iijmio.local.APILocalServiceImpl
 import nagoya.kuu.miolife.iijmio.remote.couponinfo.APIService
@@ -17,7 +15,6 @@ val iijmioModule = module {
     factory { APIServiceImpl(get()) as APIService }
     factory { APILocalServiceImpl(androidContext()) as APILocalService }
     factory { LoginServiceImpl() as LoginService }
-    factory { AccessTokenRepositoryImpl(androidContext()) as AccessTokenRepository }
     factory { LoadPacketlogUsecaseImpl(get()) as LoadPacketlogUsecase }
     factory { UpdateCouponseSwitchUsecaseImpl(get()) as UpdateCouponseSwitchUsecase }
 }

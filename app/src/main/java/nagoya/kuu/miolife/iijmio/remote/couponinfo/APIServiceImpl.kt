@@ -15,7 +15,7 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import nagoya.kuu.miolife.BuildConfig
-import nagoya.kuu.miolife.iijmio.accesstoken.AccessTokenRepository
+import nagoya.kuu.miolife.credential.AccessTokenRepository
 import nagoya.kuu.miolife.iijmio.remote.couponinfo.response.CouponInfoResponse
 import nagoya.kuu.miolife.iijmio.remote.couponinfo.response.convert
 
