@@ -30,6 +30,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/LICENSE-notice.md'
@@ -47,6 +51,11 @@ android {
 }
 
 dependencies {
+    // module reference
+    file("$rootDir/feature").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+
     // Base Libraries
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

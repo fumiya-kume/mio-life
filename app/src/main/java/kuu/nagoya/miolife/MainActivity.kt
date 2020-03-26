@@ -1,7 +1,7 @@
 package kuu.nagoya.miolife
 
-import android.app.Activity
+import androidx.fragment.app.FragmentActivity
 
-class MainActivity : Activity() {
+class MainActivity : FragmentActivity(R.layout.activity_main) {
 
 }
