@@ -58,7 +58,7 @@
             android:layout_margin="16dp"
             android:backgroundTint="@color/primaryColor"
             android:padding="16dp"
-            android:text="クーポンの状態を更新"
+            android:text="クーポンを切り替える"
             android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
