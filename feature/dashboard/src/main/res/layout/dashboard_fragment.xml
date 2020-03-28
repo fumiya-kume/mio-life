@@ -66,5 +66,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ImageView
+            android:id="@+id/navigate_setting_page_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="18dp"
+            android:src="@drawable/ic_settings_24px"
+            android:tint="@color/primaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
