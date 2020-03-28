@@ -36,6 +36,11 @@ android {
 }
 
 dependencies {
+
+    file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+
     // Base Libraries
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
