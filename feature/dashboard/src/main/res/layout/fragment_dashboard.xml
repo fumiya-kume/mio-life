@@ -49,19 +49,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/estimate_volume_text_view"
-            tools:listitem="@layout/item_sim" />
+            tools:listitem="@layout/item_dashboard_sim" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_coupon_button"
+            style="@style/Button.Big"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/primaryColor"
-            android:padding="16dp"
             android:text="クーポンを切り替える"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="DashboardItemSim">
+
+        <variable
+            name="entity"
+            type="kuu.nagoya.feature.dashboard.entity.SimEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/phone_number_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{entity.phoneNumber}"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="080-1234-5678" />
+
+            <TextView
+                android:id="@+id/sim_code_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{entity.simCode}"
+                app:layout_constraintStart_toStartOf="@id/phone_number_text_view"
+                app:layout_constraintTop_toBottomOf="@id/phone_number_text_view"
+                tools:text="hduXXXXXXXX" />
+
+            <TextView
+                android:id="@+id/coupon_use_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="@{entity.couponUse ? @string/coupon_on : @string/coupon_off }"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/sim_code_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/phone_number_text_view"
+                tools:text="クーポン:OFF" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

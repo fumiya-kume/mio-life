@@ -21,9 +21,16 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_editCouponUseFragment"
+            app:destination="@id/editCouponUseFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="kuu.nagoya.feature.setting.SettingFragment"
         android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/editCouponUseFragment"
+        android:name="kuu.nagoya.feature.edit_coupon_use.EditCouponUseFragment"
+        android:label="EditCouponUseFragment" />
 </navigation>

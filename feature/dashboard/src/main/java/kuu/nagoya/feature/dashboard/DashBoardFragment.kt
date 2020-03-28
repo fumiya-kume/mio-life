@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kuu.nagoya.feature.dashboard.databinding.DashboardFragmentBinding
+import kuu.nagoya.feature.dashboard.databinding.FragmentDashboardBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-internal class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
+internal class DashBoardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private val dashBoardFragmentViewModel: DashBoardFragmentViewModel by viewModel()
     private val dashBoardModuleNavigation: DashboardModuleNavigation by inject()
@@ -19,7 +19,7 @@ internal class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DashboardFragmentBinding.inflate(
+        val binding = FragmentDashboardBinding.inflate(
             inflater,
             container,
             false
@@ -36,6 +36,10 @@ internal class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
 
         binding.navigateSettingPageButton.setOnClickListener {
             dashBoardModuleNavigation.navigateToSetting(this)
+        }
+
+        binding.editCouponButton.setOnClickListener {
+            dashBoardModuleNavigation.navigateToEditCouponUse(this)
         }
 
         return binding.root

@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <data class="EditCouponUseItemSimBinding">
 
         <variable
             name="entity"
-            type="kuu.nagoya.feature.dashboard.entity.SimEntity" />
+            type="kuu.nagoya.feature.edit_coupon_use.entity.SimEntity" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="16dp">
+        android:layout_margin="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,13 +39,14 @@
                 app:layout_constraintTop_toBottomOf="@id/phone_number_text_view"
                 tools:text="hduXXXXXXXX" />
 
-            <TextView
+            <Switch
                 android:id="@+id/coupon_use_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:checked="@{entity.couponUse}"
                 android:padding="8dp"
-                android:text="@{entity.couponUse ? @string/coupon_on : @string/coupon_off }"
+                android:text="クーポン"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/sim_code_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,5 +54,5 @@
                 tools:text="クーポン:OFF" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 </layout>
