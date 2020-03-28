@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kuu.nagoya.feature.dashboard.databinding.DashboardFragmentBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
-class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
+internal class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
+
+    private val dashBoardFragmentViewModel: DashBoardFragmentViewModel by viewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -18,6 +22,15 @@ class DashBoardFragment : Fragment(R.layout.dashboard_fragment) {
             container,
             false
         )
+
+        val simListAdapter = SimListAdapter(requireContext())
+
+
+        dashBoardFragmentViewModel.simListLiveData.observeForever {
+            simListAdapter.submitList(it)
+        }
+
+        binding.simListRecyclerView.adapter = simListAdapter
 
         return binding.root
     }

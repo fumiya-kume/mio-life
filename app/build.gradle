@@ -55,6 +55,9 @@ dependencies {
     file("$rootDir/feature").eachDir { dir ->
         implementation project(path: ":$dir.name")
     }
+    file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
 
     // Base Libraries
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -2,13 +2,15 @@ package kuu.nagoya.miolife
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import kuu.nagoya.feature.dashboard.dashboardModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 
 class MainApplication : Application() {
     private val modules = listOf(
-        appModule
+        appModule,
+        dashboardModule
     )
 
     override fun onCreate() {

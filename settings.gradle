@@ -2,7 +2,7 @@ include ':old_app'
 rootProject.name = 'Mio Life'
 include ':app'
 
-['feature']
+['feature', 'core']
         .asList()
         .each { folderName ->
             file(folderName)

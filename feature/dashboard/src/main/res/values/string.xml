@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="coupon_on">クーポン: ON</string>
+    <string name="coupon_off">クーポン: OFF</string>
+</resources>
