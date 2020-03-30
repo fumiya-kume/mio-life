@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_self"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashBoardFragment"
@@ -33,4 +36,12 @@
         android:id="@+id/editCouponUseFragment"
         android:name="kuu.nagoya.feature.edit_coupon_use.EditCouponUseFragment"
         android:label="EditCouponUseFragment" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="kuu.nagoya.feature.auth.AuthFragment"
+        android:label="AuthFragment" >
+        <action
+            android:id="@+id/action_authFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
 </navigation>

@@ -9,6 +9,11 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
+
+        def api_property = new Properties()
+        api_property.load(project.rootProject.file('api.properties').newDataInputStream())
+        buildConfigField "String", "DEVELOPER_ID", "\"${api_property.getProperty("developer_id")}\""
+
         applicationId "kuu.nagoya.miolife"
         minSdkVersion 22
         targetSdkVersion 29
@@ -56,12 +61,13 @@ android {
 
 dependencies {
     // module reference
-    file("$rootDir/feature").eachDir { dir ->
-        implementation project(path: ":$dir.name")
-    }
     file("$rootDir/core").eachDir { dir ->
         implementation project(path: ":$dir.name")
     }
+    file("$rootDir/feature").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+
 
     // Base Libraries
     implementation fileTree(dir: 'libs', include: ['*.jar'])
