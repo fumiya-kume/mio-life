@@ -173,4 +173,14 @@ dependencies {
     testImplementation 'org.junit.platform:junit-platform-runner:1.6.0'
     androidTestImplementation "androidx.test:runner:1.2.0"
     androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
+
+    // Kotpref
+    implementation 'com.chibatching.kotpref:kotpref:2.10.0'
+    implementation 'com.chibatching.kotpref:initializer:2.10.0'
+    implementation 'com.chibatching.kotpref:enum-support:2.10.0'
+    implementation 'com.chibatching.kotpref:gson-support:2.10.0'
+    implementation 'com.chibatching.kotpref:preference-screen-dsl:2.10.0'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
