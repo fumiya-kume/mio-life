@@ -1,11 +1,10 @@
 package kuu.nagoya.feature.auth.infra
 
+import kuu.nagoya.core.config.AccessTokenObject
 import kuu.nagoya.feature.auth.domain.AccessTokenReadonlyRepository
 
-class AccessTokenReadonlyRepositoryImpl :
-    AccessTokenReadonlyRepository {
+class AccessTokenReadonlyRepositoryImpl : AccessTokenReadonlyRepository {
     override suspend fun loadAccessToken(): String {
-        //TODO 実装を追加する
-        return ""
+        return AccessTokenObject.accessToken
     }
 }
