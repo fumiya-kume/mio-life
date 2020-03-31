@@ -62,6 +62,10 @@ class AuthFragment : Fragment(R.layout.auth_fragment_auth) {
                 }
             }
 
+        binding.reloadButton.setOnClickListener {
+            authFragmentViewModel.reloadAuthStatus()
+        }
+
         return binding.root
     }
 }
