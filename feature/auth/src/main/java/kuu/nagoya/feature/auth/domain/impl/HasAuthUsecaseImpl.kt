@@ -25,7 +25,7 @@ internal class HasAuthUsecaseImpl(
                 )
             },
             onFailure = {
-                this.emit(HasAuthUsecaseResponse.Error(it.localizedMessage))
+                this.emit(HasAuthUsecaseResponse.Error(it.message ?: ""))
             }
         )
     }
