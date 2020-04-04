@@ -1,7 +1,7 @@
-package kuu.nagoya.feature.auth.infra
+package kuu.nagoya.feature.auth.root.infra
 
 import kuu.nagoya.core.config.AccessTokenObject
-import kuu.nagoya.feature.auth.domain.AccessTokenReadonlyRepository
+import kuu.nagoya.feature.auth.root.domain.AccessTokenReadonlyRepository
 
 class AccessTokenReadonlyRepositoryImpl : AccessTokenReadonlyRepository {
     override suspend fun loadAccessToken(): String {

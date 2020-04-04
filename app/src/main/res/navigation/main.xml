@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
-    app:startDestination="@id/authFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="kuu.nagoya.miolife.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
@@ -20,7 +21,7 @@
     <fragment
         android:id="@+id/dashBoardFragment"
         android:name="kuu.nagoya.feature.dashboard.DashBoardFragment"
-        android:label="DashBoardFragment" >
+        android:label="DashBoardFragment">
         <action
             android:id="@+id/action_dashBoardFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
@@ -31,17 +32,26 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="kuu.nagoya.feature.setting.SettingFragment"
-        android:label="SettingFragment" />
+        android:label="SettingFragment"></fragment>
     <fragment
         android:id="@+id/editCouponUseFragment"
         android:name="kuu.nagoya.feature.edit_coupon_use.EditCouponUseFragment"
         android:label="EditCouponUseFragment" />
     <fragment
         android:id="@+id/authFragment"
-        android:name="kuu.nagoya.feature.auth.AuthFragment"
-        android:label="AuthFragment" >
+        android:name="kuu.nagoya.feature.auth.root.view.AuthFragment"
+        android:label="AuthFragment">
         <action
             android:id="@+id/action_authFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authCallBackFragment"
+        android:name="kuu.nagoya.feature.auth.callback.AuthCallBackFragment"
+        android:label="AuthCallBackFragment">
+        <deepLink app:uri="mio-life://app/auth/" />
+        <action
+            android:id="@+id/action_authCallBackFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>

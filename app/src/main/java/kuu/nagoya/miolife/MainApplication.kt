@@ -1,6 +1,7 @@
 package kuu.nagoya.miolife
 
 import android.app.Application
+import com.chibatching.kotpref.Kotpref
 import com.jakewharton.threetenabp.AndroidThreeTen
 import kuu.nagoya.feature.auth.authModule
 import kuu.nagoya.feature.dashboard.dashboardModule
@@ -20,6 +21,7 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        Kotpref.init(applicationContext)
         AndroidThreeTen.init(applicationContext)
 
         startKoin {

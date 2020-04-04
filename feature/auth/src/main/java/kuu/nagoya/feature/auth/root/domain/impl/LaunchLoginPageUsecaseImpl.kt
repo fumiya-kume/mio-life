@@ -1,10 +1,10 @@
-package kuu.nagoya.feature.auth.domain.impl
+package kuu.nagoya.feature.auth.root.domain.impl
 
 import android.content.Intent
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import kuu.nagoya.feature.auth.domain.LaunchLoginPageUsecase
+import kuu.nagoya.feature.auth.root.domain.LaunchLoginPageUsecase
 import kuu.nagoya.resources.AppConfig
 
 class LaunchLoginPageUsecaseImpl(
@@ -13,7 +13,7 @@ class LaunchLoginPageUsecaseImpl(
     override fun execute(fragment: Fragment) {
         fun getLoginUrl(): String {
             val developerId = appConfig.iijmioDeveloperId
-            return "https://api.iijmio.jp/mobile/d/v1/authorization/?response_type=token&client_id=${developerId}&state=example_state&redirect_uri=mio-life://login"
+            return "https://api.iijmio.jp/mobile/d/v1/authorization/?response_type=token&client_id=${developerId}&state=example_state&redirect_uri=mio-life://app/auth/"
         }
 
         val customTabsIntent = CustomTabsIntent.Builder().enableUrlBarHiding().build()

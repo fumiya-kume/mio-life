@@ -26,6 +26,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             false
         )
 
+        appModuleNavigation.navigateToAuth(this)
+
         binding.navigateToDashboardButton
             .setOnClickListener {
                 appModuleNavigation.navigateToDashboard(this)

@@ -1,9 +1,9 @@
-package kuu.nagoya.feature.auth
+package kuu.nagoya.feature.auth.root.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kuu.nagoya.feature.auth.domain.HasAuthUsecaseResponse
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecaseResponse
 
 internal class AuthFragmentViewModel(
     private val hasAuthLiveDataFactory: HasAuthLiveDataFactory

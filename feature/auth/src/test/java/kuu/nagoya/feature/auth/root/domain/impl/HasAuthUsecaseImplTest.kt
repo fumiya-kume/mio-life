@@ -1,12 +1,12 @@
-package kuu.nagoya.feature.auth.domain.impl
+package kuu.nagoya.feature.auth.root.domain.impl
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.reset
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
-import kuu.nagoya.feature.auth.domain.AccessTokenReadonlyRepository
-import kuu.nagoya.feature.auth.domain.HasAuthUsecase
-import kuu.nagoya.feature.auth.domain.HasAuthUsecaseResponse
+import kuu.nagoya.feature.auth.root.domain.AccessTokenReadonlyRepository
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecase
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecaseResponse
 import kuu.nagoya.resources.FlowObserver
 import org.junit.Assert
 import org.spekframework.spek2.Spek

@@ -1,10 +1,10 @@
-package kuu.nagoya.feature.auth.domain.impl
+package kuu.nagoya.feature.auth.root.domain.impl
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kuu.nagoya.feature.auth.domain.AccessTokenReadonlyRepository
-import kuu.nagoya.feature.auth.domain.HasAuthUsecase
-import kuu.nagoya.feature.auth.domain.HasAuthUsecaseResponse
+import kuu.nagoya.feature.auth.root.domain.AccessTokenReadonlyRepository
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecase
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecaseResponse
 
 internal class HasAuthUsecaseImpl(
     private val accessTokenReadonlyRepository: AccessTokenReadonlyRepository

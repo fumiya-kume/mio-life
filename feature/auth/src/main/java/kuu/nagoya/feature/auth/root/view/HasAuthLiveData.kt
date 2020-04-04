@@ -1,11 +1,11 @@
-package kuu.nagoya.feature.auth
+package kuu.nagoya.feature.auth.root.view
 
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kuu.nagoya.feature.auth.domain.HasAuthUsecase
-import kuu.nagoya.feature.auth.domain.HasAuthUsecaseResponse
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecase
+import kuu.nagoya.feature.auth.root.domain.HasAuthUsecaseResponse
 
 internal class HasAuthLiveData(
     private val hasAuthUsecase: HasAuthUsecase,

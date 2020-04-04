@@ -1,4 +1,4 @@
-package kuu.nagoya.feature.auth.domain
+package kuu.nagoya.feature.auth.root.domain
 
 import kotlinx.coroutines.flow.Flow
 
