@@ -66,8 +66,11 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="18dp"
+            android:layout_marginBottom="32dp"
             android:src="@drawable/ic_settings_24px"
             android:tint="@color/primaryColor"
+            android:background="?android:selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toTopOf="@+id/sim_list_recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
