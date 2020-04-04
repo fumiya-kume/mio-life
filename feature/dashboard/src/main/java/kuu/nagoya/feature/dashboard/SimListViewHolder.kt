@@ -27,5 +27,7 @@ internal class SimListViewHolder private constructor(
 
     fun bindTo(simEntity: SimEntity) {
         binding.entity = simEntity
+
+        binding.root.setOnClickListener { }
     }
 }
