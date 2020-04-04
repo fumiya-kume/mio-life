@@ -1,0 +1,5 @@
+dependencies {
+    file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+}

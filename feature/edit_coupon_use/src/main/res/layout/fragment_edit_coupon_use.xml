@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="entity"
+            type="kuu.nagoya.feature.edit_coupon_use.entity.EditCouponFragmentEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/service_code_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="28dp"
+            android:padding="6dp"
+            android:text="hddxxxxx"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/plan_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ファミリープラン"
+            app:layout_constraintStart_toStartOf="@id/service_code_text_view"
+            app:layout_constraintTop_toBottomOf="@id/service_code_text_view" />
+
+        <TextView
+            android:id="@+id/estimate_volume_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="残容量:8GB"
+            app:layout_constraintBottom_toBottomOf="@id/plan_name_text_view"
+            app:layout_constraintStart_toEndOf="@id/plan_name_text_view"
+            app:layout_constraintTop_toTopOf="@id/plan_name_text_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sim_list_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/plan_name_text_view"
+            tools:listitem="@layout/item_edit_coupon_use_sim" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_and_close_button"
+            style="@style/Button.Big"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="保存して閉じる"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

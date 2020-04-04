@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/service_code_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="28dp"
+            android:padding="6dp"
+            android:text="hddxxxxx"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/plan_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ファミリープラン"
+            app:layout_constraintStart_toStartOf="@id/service_code_text_view"
+            app:layout_constraintTop_toBottomOf="@id/service_code_text_view" />
+
+        <TextView
+            android:id="@+id/estimate_volume_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="残容量:8GB"
+            app:layout_constraintBottom_toBottomOf="@id/plan_name_text_view"
+            app:layout_constraintStart_toEndOf="@id/plan_name_text_view"
+            app:layout_constraintTop_toTopOf="@id/plan_name_text_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sim_list_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/estimate_volume_text_view"
+            tools:listitem="@layout/item_dashboard_sim" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_coupon_button"
+            style="@style/Button.Big"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="クーポンを切り替える"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/navigate_setting_page_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="18dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_settings_24px"
+            android:tint="@color/primaryColor"
+            android:background="?android:selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toTopOf="@+id/sim_list_recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

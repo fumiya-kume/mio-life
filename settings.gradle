@@ -1,3 +1,13 @@
 include ':old_app'
-rootProject.name='Mio Life'
+rootProject.name = 'Mio Life'
 include ':app'
+
+['feature', 'core']
+        .asList()
+        .each { folderName ->
+            file(folderName)
+                    .eachDir { dir ->
+                        include dir.name
+                        project(":${dir.name}").projectDir = dir
+                    }
+        }
