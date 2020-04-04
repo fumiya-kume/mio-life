@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kuu.nagoya.feature.dashboard.databinding.DashboardItemSim
-import kuu.nagoya.feature.dashboard.entity.SimEntity
+import kuu.nagoya.feature.dashboard.viewentity.SimViewEntity
 
 internal class SimListViewHolder private constructor(
     private val binding: DashboardItemSim
@@ -25,8 +25,8 @@ internal class SimListViewHolder private constructor(
         }
     }
 
-    fun bindTo(simEntity: SimEntity) {
-        binding.entity = simEntity
+    fun bindTo(simViewEntity: SimViewEntity) {
+        binding.entity = simViewEntity
 
         binding.root.setOnClickListener { }
     }

@@ -1,0 +1,10 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.google.gms.oss.licenses.plugin'
+
+apply from: "$rootDir/gradle/base.gradle"
+
+dependencies {
+    file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+}

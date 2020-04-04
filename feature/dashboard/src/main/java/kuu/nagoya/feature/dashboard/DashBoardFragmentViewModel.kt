@@ -1,35 +1,19 @@
 package kuu.nagoya.feature.dashboard
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kuu.nagoya.feature.dashboard.entity.SimEntity
+import androidx.lifecycle.viewModelScope
+import kuu.nagoya.core.config.LiveDataResponse
+import kuu.nagoya.feature.dashboard.viewentity.SimViewEntity
 
-internal class DashBoardFragmentViewModel : ViewModel() {
-    private val simListMutableLiveData = MutableLiveData<List<SimEntity>>()
+internal class DashBoardFragmentViewModel(
+    private val simListLiveDataFactory: SimListLiveDataFactory,
+    contractLiveDataFactory: ContractLiveDataFactory
+) : ViewModel() {
+    private val simListMutableLiveData = simListLiveDataFactory.create(viewModelScope)
+    val simViewEntityLiveData: LiveData<LiveDataResponse<List<SimViewEntity>, Throwable>> =
+        simListMutableLiveData
 
-    val simListLiveData: LiveData<List<SimEntity>> = simListMutableLiveData
-
-    init {
-        simListMutableLiveData.value = listOf(
-            SimEntity(
-                id = 0,
-                simCode = "hdoxxxxxxxx",
-                phoneNumber = "080-1234-5678",
-                couponUse = false
-            ),
-            SimEntity(
-                id = 1,
-                simCode = "hdoxxxxxxxx",
-                phoneNumber = "080-1234-5678",
-                couponUse = false
-            ),
-            SimEntity(
-                id = 3,
-                simCode = "hdoxxxxxxxx",
-                phoneNumber = "080-1234-5678",
-                couponUse = false
-            )
-        )
-    }
+    private val _contractLiveData = contractLiveDataFactory.create(viewModelScope)
+    val contactLiveData = _contractLiveData
 }

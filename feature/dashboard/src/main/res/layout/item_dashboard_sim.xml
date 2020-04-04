@@ -7,13 +7,13 @@
 
         <variable
             name="entity"
-            type="kuu.nagoya.feature.dashboard.entity.SimEntity" />
+            type="kuu.nagoya.feature.dashboard.viewentity.SimViewEntity" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
