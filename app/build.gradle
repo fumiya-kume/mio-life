@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.oss.licenses.plugin'
 
 apply from: "$rootDir/gradle/base.gradle"
 
@@ -16,6 +17,9 @@ android {
 dependencies {
     // module reference
     file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+    file("$rootDir/data").eachDir { dir ->
         implementation project(path: ":$dir.name")
     }
     file("$rootDir/feature").eachDir { dir ->

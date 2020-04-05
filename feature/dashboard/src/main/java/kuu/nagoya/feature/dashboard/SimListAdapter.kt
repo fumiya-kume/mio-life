@@ -4,18 +4,21 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import kuu.nagoya.feature.dashboard.entity.SimEntity
+import kuu.nagoya.feature.dashboard.viewentity.SimViewEntity
 
 internal class SimListAdapter(private val context: Context) :
-    ListAdapter<SimEntity, SimListViewHolder>(DIFF_UTIL) {
+    ListAdapter<SimViewEntity, SimListViewHolder>(DIFF_UTIL) {
 
     companion object {
-        private val DIFF_UTIL = object : DiffUtil.ItemCallback<SimEntity>() {
-            override fun areItemsTheSame(oldItem: SimEntity, newItem: SimEntity): Boolean {
+        private val DIFF_UTIL = object : DiffUtil.ItemCallback<SimViewEntity>() {
+            override fun areItemsTheSame(oldItem: SimViewEntity, newItem: SimViewEntity): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: SimEntity, newItem: SimEntity): Boolean {
+            override fun areContentsTheSame(
+                oldItem: SimViewEntity,
+                newItem: SimViewEntity
+            ): Boolean {
                 return oldItem == newItem
             }
         }

@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
 apply plugin: "de.mannodermaus.android-junit5"
 
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -183,4 +182,11 @@ dependencies {
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
+
+    // OSS-licences
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 }

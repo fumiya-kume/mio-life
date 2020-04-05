@@ -1,0 +1,9 @@
+apply plugin: 'com.android.library'
+
+apply from: "$rootDir/gradle/base.gradle"
+
+dependencies {
+    file("$rootDir/core").eachDir { dir ->
+        implementation project(path: ":$dir.name")
+    }
+}

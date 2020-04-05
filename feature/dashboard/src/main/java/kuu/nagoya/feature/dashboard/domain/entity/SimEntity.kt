@@ -1,4 +1,4 @@
-package kuu.nagoya.feature.dashboard.entity
+package kuu.nagoya.feature.dashboard.domain.entity
 
 internal data class SimEntity(
     val id: Int,
