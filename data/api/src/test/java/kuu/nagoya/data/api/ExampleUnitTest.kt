@@ -1,4 +1,4 @@
-package kuu.nagoya.core.config
+package kuu.nagoya.data.api
 
 import org.junit.Test
 
